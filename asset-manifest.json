@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/intargram/static/css/main.cc2e84ad.css",
+    "main.js": "/intargram/static/js/main.4471ec27.js",
+    "index.html": "/intargram/index.html",
+    "main.cc2e84ad.css.map": "/intargram/static/css/main.cc2e84ad.css.map",
+    "main.4471ec27.js.map": "/intargram/static/js/main.4471ec27.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cc2e84ad.css",
+    "static/js/main.4471ec27.js"
+  ]
+}
