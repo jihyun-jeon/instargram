@@ -8,15 +8,15 @@ const MainJiHyun = () => {
     {
       id: 0,
       writerId: 'canon_mj',
-      writerImg: './images/jihyun/wecode.jpeg',
-      feedImg: '/images/jihyun/giraffe.jpg',
+      writerImg: '/instargram/images/jihyun/wecode.jpeg',
+      feedImg: '/instargram/images/jihyun/giraffe.jpg',
       feedText: '아마존 사파리에서 기린봤당...',
     },
     {
       id: 1,
       writerId: 'jihyun',
-      writerImg: './images/jihyun/floggy.jpeg',
-      feedImg: '/images/jihyun/boat.jpeg',
+      writerImg: '/instargram/images/jihyun/floggy.jpeg',
+      feedImg: '/instargram/images/jihyun/boat.jpeg',
       feedText: '하와이로 서핑갔다~ 유후...',
     },
   ]);
