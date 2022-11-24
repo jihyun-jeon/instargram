@@ -13,23 +13,22 @@
 
   #loginContainer {
     width: 350px;
-    height: 400px;
+    height: 450px;
     border: 1px solid lightgray;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
+    border-radius: 10px;
 
     .logo {
-      font-family: 'Lobster', cursive;
+      font-family: cursive, 'Lobster';
       font-size: 50px;
-      position: absolute;
-      top: 30px;
+      font-weight: bold;
+      margin-top: 60px;
     }
 
     #loginForm {
-      position: absolute;
-      top: 140px;
+      margin-top: 50px;
 
       .valid {
         border: 1px solid #ddd;
@@ -43,7 +42,7 @@
         display: block;
         width: 268px;
         height: 38px;
-        padding: 9px 0px 7px 8px;
+        padding: 20px 0px 7px 8px;
         margin-bottom: 10px;
         background-color: #fafafa;
         border-radius: 5px;
@@ -72,11 +71,16 @@
       }
     }
 
-    .forgot {
-      color: darkblue;
+    .error {
+      margin-top: 40px;
+      color: rgb(210, 59, 59);
       font-weight: 500;
-      position: absolute;
-      bottom: 20px;
+      height: 18px;
+    }
+
+    .forgot {
+      margin-top: 45px;
+      color: gray;
     }
   }
 }

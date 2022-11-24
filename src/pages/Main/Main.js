@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Feed from './Feed';
-import names from '../datas/names';
+
 import './main.scss';
+import { useNavigate } from 'react-router-dom';
 
 const MainJiHyun = () => {
   const [feedsDATA] = useState([
     {
       id: 0,
-      writerId: 'canon_mj',
-      writerImg: '/instargram/images/jihyun/wecode.jpeg',
+      writerId: 'someone.kim',
+      writerImg: '/instargram/images/jihyun/catImg.jpg',
       feedImg: '/instargram/images/jihyun/giraffe.jpg',
       feedText: '아마존 사파리에서 기린봤당...',
     },
@@ -22,15 +23,33 @@ const MainJiHyun = () => {
   ]);
   const [searchShow, setSearchShow] = useState(false);
   const [menuIsShow, setmenuIsShow] = useState(false);
-  const [searchList, setSearchList] = useState(names);
+  const [searchList, setSearchList] = useState(NAMES);
+
+  console.log(searchList);
+
+  const navigate = useNavigate();
+
+  // const onInput = e => {
+  //   const searchValue = e.target.value;
+  //   setSearchList(prev => {
+  //     if (searchValue === '') {
+  //       return [...NAMES];
+  //     }
+  //     return NAMES.filter(el => el.name.includes(searchValue));
+  //   });
+  // };
 
   const onInput = e => {
     const searchValue = e.target.value;
     setSearchList(prev => {
       if (searchValue === '') {
-        return [...names];
+        return [...NAMES];
       }
-      return names.filter(el => el.name.includes(searchValue));
+      const IncludeArr = NAMES.filter(el => el.name.includes(searchValue));
+      if (IncludeArr.length === 0) {
+        return [{ name: '', korean: '' }];
+      }
+      return IncludeArr;
     });
   };
 
@@ -47,21 +66,20 @@ const MainJiHyun = () => {
               />
             </p>
             <p>
-              <span className="MainWestagram">westagram</span>
+              <span className="MainWestagram">Instagram</span>
             </p>
           </div>
           <div className="navBox" id="middleNav">
-            <p>
-              <input
-                type="text"
-                placeholder="검색"
-                onInput={onInput}
-                onFocus={e => setSearchShow(prev => !prev)}
-                onBlur={e => setSearchShow(prev => !prev)}
-              />
-            </p>
+            <input
+              type="text"
+              placeholder="검색"
+              onInput={onInput}
+              onFocus={e => setSearchShow(prev => !prev)}
+              onBlur={e => setSearchShow(prev => !prev)}
+            />
 
-            <div id="searchIdWeapper" className={searchShow ? '' : 'boxShow'}>
+            {/* <div id="searchIdWeapper" className={searchShow ? '' : 'boxHidden'}> */}
+            <div id="searchIdWeapper" className="">
               <div id="searchId">
                 {searchList.map((el, idx) => {
                   return (
@@ -110,7 +128,7 @@ const MainJiHyun = () => {
             <button>저장됨</button>
             <button>설정</button>
             <button>계정 전환</button>
-            <button>로그아웃</button>
+            <button onClick={() => navigate('/')}>로그아웃</button>
           </div>
         </div>
       </nav>
@@ -131,11 +149,11 @@ const MainJiHyun = () => {
           <div className="mainRight">
             <div className="userTemplate">
               <p>
-                <img src="./images/jihyun/wecode.jpeg" alt="wecodeLogo" />
+                <img src="./images/jihyun/cardImg.jpeg" alt="catImg" />
               </p>
               <div className="rightTemplate">
-                <p>wecode_bootcamp</p>
-                <p>WeCode ㅣ 위코드</p>
+                <p>jihyun.jyun</p>
+                <p>지현</p>
               </div>
             </div>
             <div className="story">
@@ -244,3 +262,41 @@ const MainJiHyun = () => {
 };
 
 export default MainJiHyun;
+
+const NAMES = [
+  { name: 'alice', korean: '앨리스' },
+  { name: 'abel', korean: '아벨' },
+  { name: 'alexandra', korean: '알렉산드라' },
+
+  { name: 'baby', korean: '베이비' },
+  { name: 'benny', korean: '베니' },
+  { name: 'brooke', korean: '브루크' },
+
+  { name: 'callie', korean: '캘리' },
+  { name: 'camille', korean: '카밀' },
+  { name: 'charlotte', korean: '샬롯' },
+
+  { name: 'dua Lipa', korean: '두아 리파' },
+  { name: 'dora', korean: '도라' },
+  { name: 'dorothy', korean: '도로시' },
+
+  { name: 'earl', korean: '얼' },
+  { name: 'edgar', korean: '에드가' },
+  { name: 'edward', korean: '에드워드' },
+
+  { name: 'fabiola', korean: '파비올라' },
+  { name: 'felipe', korean: '펠립' },
+  { name: 'finn', korean: '핀' },
+
+  { name: 'gael', korean: '게일' },
+  { name: 'genevieve', korean: '제네비에브' },
+  { name: 'gary', korean: '게리' },
+
+  { name: 'hailey', korean: '헤일리' },
+  { name: 'hana', korean: '하나' },
+  { name: 'heaven', korean: '헤븐' },
+
+  { name: 'stacey', korean: '스테이시' },
+  { name: 'stella', korean: '스텔라' },
+  { name: 'sofia', korean: '소피아' },
+];

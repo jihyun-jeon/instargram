@@ -1,65 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.scss';
+import InputField from '../../components/InputField';
 
 const LoginJiHyun = () => {
-  const [loginInfo, setLoginInfo] = useState({ name: '', password: '' });
-  const [bolderValue, setBolderValue] = useState({
-    idBolder: 'valid',
-    pwBolder: 'valid',
-  });
-  const [placehoderValue, setPlacehoderValue] = useState({
-    idPlaceHolder: '전화번호, 사용자 이름 또는 이메일',
-    pwPlaceHolder: '비밀번호 6자리 이상',
-  });
+  const [loginInfo, setLoginInfo] = useState({ userId: '', userPw: '' });
+  const [errMessage, setErrMessage] = useState('');
 
   const navigate = useNavigate();
-
-  const onInput = e => {
-    const { name, value } = e.target;
-
-    setLoginInfo(prev => {
-      return { ...prev, [name]: value };
-    });
-
-    if (loginInfo.name !== '') {
-      setBolderValue(prev => ({ ...prev, idBolder: 'valid' }));
-    }
-    if (loginInfo.password !== '') {
-      setBolderValue(prev => ({ ...prev, pwBolder: 'valid' }));
-    }
-  };
 
   const onSubmit = e => {
     e.preventDefault();
 
-    if (loginInfo.name === '' && loginInfo.password === '') {
+    if (loginInfo.userId === '' && loginInfo.userPw === '') {
       return;
     }
 
-    if (loginInfo.name.length < 6 || !loginInfo.name.includes('@')) {
-      setLoginInfo(prev => ({ ...prev, name: '' }));
-      setBolderValue(prev => ({ ...prev, idBolder: 'unvalid' }));
-      setPlacehoderValue(prev => ({
-        ...prev,
-        idPlaceHolder: '@를 포함한, 6자리 이상!',
-      }));
+    if (loginInfo.userId.length < 6) {
+      setErrMessage('아이디 6자리 이상 입력하세요!');
+      return;
     }
 
-    if (loginInfo.password.length < 6) {
-      setLoginInfo(prev => ({ ...prev, password: '' }));
-      setBolderValue(prev => ({ ...prev, pwBolder: 'unvalid' }));
-      setPlacehoderValue(prev => ({
-        ...prev,
-        pwPlaceHolder: '6자리 이상!',
-      }));
+    if (loginInfo.userPw.length < 6) {
+      setErrMessage('비밀번호 6자리 이상 입력하세요!');
+      return;
     }
 
-    if (
-      loginInfo.name.length >= 6 &&
-      loginInfo.name.includes('@') &&
-      loginInfo.password.length >= 6
-    ) {
+    if (loginInfo.userId.length >= 6 && loginInfo.userPw.length >= 6) {
       navigate('/main');
     }
   };
@@ -67,32 +34,33 @@ const LoginJiHyun = () => {
   return (
     <div id="loginWrapper">
       <div id="loginContainer">
-        <p className="logo">westagram</p>
+        <p className="logo">Instagram</p>
 
         <form id="loginForm" onSubmit={onSubmit}>
-          <input
-            type="text"
-            placeholder={placehoderValue.idPlaceHolder}
-            className={bolderValue.idBolder}
-            name="name"
-            value={loginInfo.name}
-            onInput={onInput}
+          <InputField
+            context="이메일"
+            label="userId"
+            name="userId"
+            type="email"
+            loginInfo={loginInfo}
+            setLoginInfo={setLoginInfo}
           />
-          <input
+
+          <InputField
+            context="비밀번호"
+            label="userPw"
+            name="userPw"
             type="password"
-            placeholder={placehoderValue.pwPlaceHolder}
-            className={bolderValue.pwBolder}
-            name="password"
-            value={loginInfo.password}
-            onInput={onInput}
+            loginInfo={loginInfo}
+            setLoginInfo={setLoginInfo}
           />
           <button
             type="submit"
             disabled={
-              loginInfo.name !== '' && loginInfo.password !== '' ? false : true
+              loginInfo.userId !== '' && loginInfo.userPw !== '' ? false : true
             }
             className={
-              loginInfo.name !== '' && loginInfo.password !== ''
+              loginInfo.userId !== '' && loginInfo.userPw !== ''
                 ? 'fullBtn'
                 : 'emptyBtn'
             }
@@ -100,7 +68,7 @@ const LoginJiHyun = () => {
             로그인
           </button>
         </form>
-
+        <p className="error">{errMessage}</p>
         <p className="forgot">비밀번호를 잊으셨나요?</p>
       </div>
     </div>
