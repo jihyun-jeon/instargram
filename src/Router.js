@@ -7,7 +7,7 @@ import MainJiHyun from './pages/Main/Main';
 
 const Router = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/instargram/">
       <Routes>
         <Route path="/" element={<LoginJiHyun />} />
         <Route path="/main" element={<MainJiHyun />} />
