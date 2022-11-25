@@ -14,14 +14,15 @@
     border-bottom: 1px solid lightgray;
 
     #navBoxs {
-      display: flex;
-      justify-content: space-between;
-      width: 850px;
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 33.333% 33.333% 33.333%;
+      padding: 0 10%;
 
       .navBox {
-        width: 33.3%;
         height: 32px;
+        width: 100%;
+        min-width: 193px;
+        // border: 1px solid red;
       }
 
       p {
@@ -37,7 +38,7 @@
           width: 50px;
           padding-right: 20px;
           border-right: 2px solid black;
-          margin-right: 20px;
+          margin-right: 13px;
         }
 
         .MainWestagram {
@@ -48,8 +49,11 @@
 
       /* 중간 nav */
       #middleNav {
+        width: 100%;
+        padding: 0 10%;
+
         input {
-          width: 70%;
+          width: 100%;
           height: 31px;
           display: block;
           margin: 0 auto;
@@ -149,7 +153,8 @@
       /* 오른쪽 nav */
       #rightNav {
         display: flex;
-        padding-left: 20%;
+        padding-left: 30%;
+        // background-color: rgb(151, 177, 127);
 
         .rightNavImgWrapper {
           width: 100px;
@@ -165,7 +170,7 @@
 
           img {
             width: 25px;
-            margin: 0 13px;
+            // margin: 0 13px;
           }
         }
 
@@ -490,6 +495,32 @@
           }
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 950px) {
+    #mainRightWrapper {
+      display: none;
+    }
+
+    main {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media screen and (max-width: 560px) {
+    #mainRightWrapper {
+      display: none;
+    }
+
+    main {
+      width: 100%;
+      justify-content: center;
+    }
+
+    nav {
+      min-width: 700px;
     }
   }
 }

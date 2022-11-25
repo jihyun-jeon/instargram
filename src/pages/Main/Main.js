@@ -94,6 +94,7 @@ const MainJiHyun = () => {
               </div>
             </div>
           </div>
+
           <div className="navBox" id="rightNav">
             <p className="rightNavImgWrapper">
               <img
