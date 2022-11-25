@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/instargram/static/css/main.fceaf469.css",
-    "main.js": "/instargram/static/js/main.a3c20cc3.js",
+    "main.css": "/instargram/static/css/main.7db36735.css",
+    "main.js": "/instargram/static/js/main.7d304d2e.js",
     "index.html": "/instargram/index.html",
-    "main.fceaf469.css.map": "/instargram/static/css/main.fceaf469.css.map",
-    "main.a3c20cc3.js.map": "/instargram/static/js/main.a3c20cc3.js.map"
+    "main.7db36735.css.map": "/instargram/static/css/main.7db36735.css.map",
+    "main.7d304d2e.js.map": "/instargram/static/js/main.7d304d2e.js.map"
   },
   "entrypoints": [
-    "static/css/main.fceaf469.css",
-    "static/js/main.a3c20cc3.js"
+    "static/css/main.7db36735.css",
+    "static/js/main.7d304d2e.js"
   ]
 }
