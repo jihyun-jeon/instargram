@@ -21,23 +21,12 @@ const MainJiHyun = () => {
       feedText: '하와이로 서핑갔다~ 유후...',
     },
   ]);
+
   const [searchShow, setSearchShow] = useState(false);
   const [menuIsShow, setmenuIsShow] = useState(false);
   const [searchList, setSearchList] = useState(NAMES);
 
-  console.log(searchList);
-
   const navigate = useNavigate();
-
-  // const onInput = e => {
-  //   const searchValue = e.target.value;
-  //   setSearchList(prev => {
-  //     if (searchValue === '') {
-  //       return [...NAMES];
-  //     }
-  //     return NAMES.filter(el => el.name.includes(searchValue));
-  //   });
-  // };
 
   const onInput = e => {
     const searchValue = e.target.value;
@@ -78,39 +67,47 @@ const MainJiHyun = () => {
               onBlur={e => setSearchShow(prev => !prev)}
             />
 
-            {/* <div id="searchIdWeapper" className={searchShow ? '' : 'boxHidden'}> */}
-            <div id="searchIdWeapper" className="">
+            <div id="searchIdWeapper" className={searchShow ? '' : 'boxHidden'}>
+              {/* <div id="searchIdWeapper" className=""> */}
               <div id="searchId">
                 {searchList.map((el, idx) => {
-                  return (
-                    <div className="idBox" key={idx}>
-                      <p>
-                        <i className="fas fa-user-circle userIcon" />
-                      </p>
-                      <div className="idBoxRight">
-                        <p>{el.name}</p>
-                        <p>{el.korean}</p>
+                  if (el.name) {
+                    return (
+                      <div className="idBox" key={idx}>
+                        <p>
+                          <i className="fas fa-user-circle userIcon" />
+                        </p>
+                        <div className="idBoxRight">
+                          <p>{el.name}</p>
+                          <p>{el.korean}</p>
+                        </div>
                       </div>
-                    </div>
-                  );
+                    );
+                  } else {
+                    return (
+                      <div className="idBox noSearch" key={idx}>
+                        검색결과 없습니다
+                      </div>
+                    );
+                  }
                 })}
               </div>
             </div>
           </div>
           <div className="navBox" id="rightNav">
-            <p>
+            <p className="rightNavImgWrapper">
               <img
                 src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/explore.png"
                 alt="navigation"
               />
             </p>
-            <p>
+            <p className="rightNavImgWrapper">
               <img
                 src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/bearu/heart.png"
                 alt="heart"
               />
             </p>
-            <p className="profileLi">
+            <div className="rightNavImgWrapper profileLi">
               <button
                 type="button"
                 className="profileBtn"
@@ -121,14 +118,15 @@ const MainJiHyun = () => {
                   alt="user"
                 />
               </button>
-            </p>
-          </div>
-          <div id="menuBox" className={menuIsShow ? null : 'hidden'}>
-            <button>프로필</button>
-            <button>저장됨</button>
-            <button>설정</button>
-            <button>계정 전환</button>
-            <button onClick={() => navigate('/')}>로그아웃</button>
+
+              <div id="menuBox" className={menuIsShow ? null : 'hidden'}>
+                <button>프로필</button>
+                <button>저장됨</button>
+                <button>설정</button>
+                <button>계정 전환</button>
+                <button onClick={() => navigate('/')}>로그아웃</button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
