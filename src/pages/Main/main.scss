@@ -21,7 +21,7 @@
       .navBox {
         height: 32px;
         width: 100%;
-        min-width: 193px;
+        // min-width: 193px;
         // border: 1px solid red;
       }
 
@@ -42,8 +42,14 @@
         }
 
         .MainWestagram {
-          font-family: 'Lobster', cursive;
+          font-family: cursive, 'Lobster';
           font-size: 28px;
+        }
+
+        @media screen and (max-width: 530px) {
+          .MainWestagram {
+            font-size: 1.5rem;
+          }
         }
       }
 
@@ -70,6 +76,12 @@
 
         input:focus {
           outline: none;
+        }
+      }
+
+      @media screen and (max-width: 530px) {
+        .MainWestagram {
+          font-size: 1.5rem;
         }
       }
 
@@ -153,7 +165,7 @@
       /* 오른쪽 nav */
       #rightNav {
         display: flex;
-        padding-left: 40%;
+        padding-left: 50%;
         // background-color: rgb(151, 177, 127);
 
         .rightNavImgWrapper {
@@ -506,21 +518,6 @@
     main {
       width: 100%;
       justify-content: center;
-    }
-  }
-
-  @media screen and (max-width: 560px) {
-    #mainRightWrapper {
-      display: none;
-    }
-
-    main {
-      width: 100%;
-      justify-content: center;
-    }
-
-    nav {
-      min-width: 700px;
     }
 
     .MainLogo {
